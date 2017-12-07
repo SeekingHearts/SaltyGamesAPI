@@ -44,7 +44,7 @@ public class InvsClick implements Listener {
 
 			if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§aFreunde")) {
 				p.playSound(p.getLocation(), Sound.FIREWORK_LAUNCH, 1, 1);
-				p.performCommand("friendsgui");
+				Bukkit.dispatchCommand(p, "friendsgui");
 				p.closeInventory();
 			} else if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§cEinstellungen")) {
 				p.playSound(p.getLocation(), Sound.FIREWORK_LAUNCH, 1, 1);
