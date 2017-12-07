@@ -1,0 +1,132 @@
+name: LK-LobbySystem
+version: 1.0.2
+author: Aaron
+description: Copyright Rechte NUR auf Nachfrage
+
+main: me.aaron.main.LobbyPlugin
+
+commands:
+  arenalist:
+    description: Listet die Arenen auf
+    aliases: [arena, al, ar]
+  setclear:
+    description: Aktiviert den SpawnClear
+  fastbow:
+    description: Aktiviert den Lobby Fastbow
+    aliases: [fb, fastb, fbow]
+    permission: lobby.fastbow
+  gm:
+    description: Setzt den GameMode
+  booster:
+    description: Aktiviert den Lobby Booster
+    aliases: [gb, getb]
+    permission: lobby.booster
+  inv:
+    description: Erlaubt dir ein anderes Inventar anzuschauen
+    permission: lobby.invsee
+  spy:
+    description: Laesst dich jeden Befehl von normalen Spielern sehen
+    permission: lobby.spy
+  setboosterblocks:
+    description: Setzt die Blocks fuer den Booster
+    permission: lobby.setboosterblocks
+    aliases: [sb, setb]
+  hub:
+    description: Teleportiert dich zum Spawn
+    aliases: [spawn, l, leave]
+  sethub:
+    description: Legt den Hub Spawnpoint fest
+    permission: lobby.sethub
+  setwarps:
+    description: Setzt die Spawns fuer die MiniGames
+    permission: lobby.setwarps
+  games:
+    description: Oeffnet den Compass
+  hideplayers:
+    description: Oeffnet das HidePlayer Inventar
+  checkarrays:
+    description: Checkt dir Arrays
+  silentlobby:
+    description: Geht in die Silent Lobby
+  pvpoff:
+    description: Deaktiviert das PvP nach 5 Sekunden ohne Schaden
+  buildmode:
+    description: Erlaubt dir zu bauen
+    aliases: [build]
+    permission: lobby.buildmode
+    
+permissions:
+  lobby.*:
+    description: Erlaubt dir alle Befehle vom LobbySystem zu benutzen
+    children:
+      lobby.fastbow: true
+      lobby.gamemode: true
+      lobby.sound: true
+      lobby.ignorespy: true
+      lobby.spy: true
+      lobby.sethub: true
+      lobby.invsee: true
+      lobby.instanttp: true
+      lobby.booster: true
+      lobby.setclear: true
+      lobby.setboosterblocks: true
+      lobby.setwarps: true
+      lobby.buildmode: true
+      lobby.hideplayer.staff: true
+  lobby.vip:
+    description: Erlaubt alle VIP Befehle
+    children:
+      lobby.silent: true
+      lobby.instanttp: true
+  lobby.fastbow:
+    description: Erlaubt dir den Lobby Fastbow zu benutzen
+    default: true
+  lobby.gamemode:
+    description: Erlaubt dir den GameMode zu wechseln
+    default: false
+  lobby.sound:
+    description: Erlaubt dir Sounds in der Lobby zu hoeren
+    default: true
+  lobby.ignorespy:
+    description: Erlaubt dir dem Spy Command zu wiederstehen
+    default: false
+  lobby.spy:
+    description: Erlaubt dir den Spy Command zu benutzen
+    default: false
+  lobby.sethub:
+    description: Erlaubt dir den Hub zu setzten
+    default: false
+  lobby.invsee:
+    description: Erlaubt dir in andere Inventare zu sehen
+    default: false
+  lobby.instanttp:
+    description: Erlaubt dir dich ohne warten zum Hub zu teleportieren
+  lobby.booster:
+    description: Erlaubt dir den Booster zu benutzen
+  lobby.setclear:
+    description: Erlaubt dir den Spawn Clear zu aktivieren
+  lobby.setboosterblocks:
+    description: Erlaubt dir die Booster Blocks zu wechseln
+  lobby.setwarps:
+    description: Erlaubt dir die MiniGame Spawns zu setzten
+    default: false
+  lobby.join.dev:
+    description: Broadcast Dev Msg
+  lobby.join.srdev:
+    description: Broadcast SrDev Msg
+  lobby.join.coadmin:
+    description: Broadcast CoAdmin Msg
+  lobby.join.admin:
+    description: Broadcast Admin Msg
+  lobby.join.servermanager:
+    description: Broadcast ServerManager Msg
+  lobby.join.techniker:
+    description: Broadcast Techniker Msg
+  lobby.silent:
+    description: Erlaubt dir die SilentLobby zu betreten
+  lobby.buildmode:
+    description: Erlaubt dir den BuildMode zu benutzen
+    default: false
+  lobby.hideplayer.staff:
+    description: Zeigt dich im Staff Only Modus an
+    default: false
