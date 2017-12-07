@@ -1,6 +1,5 @@
 package me.aaron.listeners.inventories;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -20,10 +19,6 @@ public class Profil implements Listener {
 			if (p.getItemInHand().getType() == Material.SKULL_ITEM) {
 				if (e.getItem().getItemMeta().getDisplayName().equalsIgnoreCase("§6Profil")) {
 					Invs.openProfile(p);
-				}
-			} else if (p.getItemInHand().getType() == Material.STAINED_CLAY) {
-				if (e.getItem().getItemMeta().getDisplayName().equalsIgnoreCase("§aFreunde")) {
-					Bukkit.dispatchCommand(p, "friendsgui");
 				}
 			}
 		}
