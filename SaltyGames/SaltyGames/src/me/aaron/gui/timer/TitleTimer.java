@@ -1,11 +1,11 @@
-package me.aaron.timer;
+package me.aaron.gui.timer;
 
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import me.aaron.main.NMSUtil;
 import me.aaron.main.PluginManager;
 import me.aaron.main.SaltyGames;
+import me.aaron.nms.NMSUtil;
 
 public class TitleTimer extends BukkitRunnable {
 	

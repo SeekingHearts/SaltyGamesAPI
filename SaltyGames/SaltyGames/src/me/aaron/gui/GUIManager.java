@@ -11,20 +11,20 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.ItemStack;
 
-import me.aaron.data.GBPlayer;
+import me.aaron.data.SGPlayer;
 import me.aaron.events.EnterSaltyGamesEvent;
 import me.aaron.games.GameGui;
 import me.aaron.gui.buttons.AButton;
-import me.aaron.gui.game.TopListPage;
 import me.aaron.gui.guis.AGui;
 import me.aaron.gui.guis.MainGui;
 import me.aaron.gui.guis.game.GameGuiPage;
+import me.aaron.gui.guis.game.TopListPage;
 import me.aaron.gui.shop.Page;
 import me.aaron.gui.shop.ShopManager;
-import me.aaron.main.NMSUtil;
 import me.aaron.main.SaltyGames;
 import me.aaron.main.SaltyGamesLang;
 import me.aaron.main.SaltyGamesSettings;
+import me.aaron.nms.NMSUtil;
 import me.aaron.utils.ClickAction;
 import me.aaron.utils.Permission;
 
@@ -361,7 +361,7 @@ public class GUIManager {
 		return shopManager;
 	}
 
-	public void updateTokens(GBPlayer gbPlayer) {
+	public void updateTokens(SGPlayer gbPlayer) {
 		mainGui.updateTokens(gbPlayer);
 		shopManager.updateTokens(gbPlayer);
 	}

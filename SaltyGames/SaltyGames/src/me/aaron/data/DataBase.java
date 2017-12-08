@@ -63,9 +63,9 @@ public abstract class DataBase {
 
     public abstract boolean isSet(String path);
 
-    public abstract void loadPlayer(GBPlayer player, boolean async);
+    public abstract void loadPlayer(SGPlayer player, boolean async);
 
-    public abstract void savePlayer(GBPlayer player, boolean async);
+    public abstract void savePlayer(SGPlayer player, boolean async);
     
     
     public void onShutDown() {

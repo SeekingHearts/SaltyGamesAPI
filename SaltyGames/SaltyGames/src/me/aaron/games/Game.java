@@ -11,9 +11,9 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import me.aaron.main.Module;
-import me.aaron.main.NMSUtil;
 import me.aaron.main.SaltyGames;
 import me.aaron.main.SaltyGamesLang;
+import me.aaron.nms.NMSUtil;
 import me.aaron.utils.FileUtils;
 
 public abstract class Game {

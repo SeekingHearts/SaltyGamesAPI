@@ -40,14 +40,15 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import me.aaron.data.GBPlayer;
+import me.aaron.data.SGPlayer;
 import me.aaron.events.LeftSaltyGamesEvent;
 import me.aaron.games.Game;
 import me.aaron.games.GameManager;
 import me.aaron.gui.GUIManager;
-import me.aaron.invitation.HandleInvitations;
-import me.aaron.invitation.HandleInviteInput;
-import me.aaron.timer.TitleTimer;
+import me.aaron.gui.timer.TitleTimer;
+import me.aaron.input.HandleInvitations;
+import me.aaron.input.HandleInviteInput;
+import me.aaron.nms.NMSUtil;
 import me.aaron.utils.ItemStackUtil;
 import me.aaron.utils.Permission;
 import me.aaron.utils.StringUtil;
@@ -86,7 +87,7 @@ public class PluginManager implements Listener {
 	private Map<UUID, TitleTimer> titleTimers = new HashMap<>();
 
 	// players
-	private Map<UUID, GBPlayer> gbPlayers = new HashMap<>();
+	private Map<UUID, SGPlayer> gbPlayers = new HashMap<>();
 
 	// hot bar stuff
 	public static int exit, toMain, toGame, toHold = 0;
@@ -126,7 +127,7 @@ public class PluginManager implements Listener {
 	public void loadPlayers() {
 		for (Player player : Bukkit.getOnlinePlayers()) {
 			if (!disabledWorlds.contains(player.getLocation().getWorld().getName())) {
-				gbPlayers.putIfAbsent(player.getUniqueId(), new GBPlayer(plugin, player.getUniqueId()));
+				gbPlayers.putIfAbsent(player.getUniqueId(), new SGPlayer(plugin, player.getUniqueId()));
 			}
 		}
 	}
@@ -433,7 +434,7 @@ public class PluginManager implements Listener {
 	public void onWorldChange(PlayerChangedWorldEvent event) {
 		if (!disabledWorlds.contains(event.getPlayer().getLocation().getWorld().getName())) {
 			if (!gbPlayers.containsKey(event.getPlayer().getUniqueId())) {
-				gbPlayers.put(event.getPlayer().getUniqueId(), new GBPlayer(plugin, event.getPlayer().getUniqueId()));
+				gbPlayers.put(event.getPlayer().getUniqueId(), new SGPlayer(plugin, event.getPlayer().getUniqueId()));
 			}
 
 			// hub stuff
@@ -476,7 +477,7 @@ public class PluginManager implements Listener {
 	public void onJoin(PlayerJoinEvent event) {
 		if (!disabledWorlds.contains(event.getPlayer().getLocation().getWorld().getName())) {
 			gbPlayers.putIfAbsent(event.getPlayer().getUniqueId(),
-					new GBPlayer(plugin, event.getPlayer().getUniqueId()));
+					new SGPlayer(plugin, event.getPlayer().getUniqueId()));
 		}
 		if (SaltyGamesSettings.hubMode && hubWorlds.contains(event.getPlayer().getLocation().getWorld().getName())
 				&& setOnWorldJoin) {
@@ -659,7 +660,7 @@ public class PluginManager implements Listener {
 			Bukkit.getLogger().log(Level.SEVERE, "-------------------------------------------------------------------");
 		}
 
-		for (GBPlayer player : gbPlayers.values()) {
+		for (SGPlayer player : gbPlayers.values()) {
 			player.remove();
 		}
 		gbPlayers.clear();
@@ -727,7 +728,7 @@ public class PluginManager implements Listener {
 		return null;
 	}
 
-	public GBPlayer getPlayer(UUID uuid) {
+	public SGPlayer getPlayer(UUID uuid) {
 		return gbPlayers.get(uuid);
 	}
 
@@ -818,7 +819,7 @@ public class PluginManager implements Listener {
 	}
 
 	public boolean wonTokens(UUID player, int tokens, String gameID) {
-		GBPlayer gbPlayer = gbPlayers.get(player);
+		SGPlayer gbPlayer = gbPlayers.get(player);
 		if (gbPlayer == null)
 			return false;
 

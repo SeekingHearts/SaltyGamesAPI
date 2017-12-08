@@ -12,7 +12,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.MaterialData;
 
-import me.aaron.data.GBPlayer;
+import me.aaron.data.SGPlayer;
 import me.aaron.gui.GUIManager;
 import me.aaron.gui.buttons.AButton;
 import me.aaron.gui.guis.AGui;
@@ -82,7 +82,7 @@ public class Shop extends AGui {
 		return super.open(p);
 	}
 	
-	void loadPlayerShop(GBPlayer p) {
+	void loadPlayerShop(SGPlayer p) {
 		if (SaltyGamesSettings.tokensEnabled) {
 			ItemStack tokensItem = new AButton(new MaterialData(Material.GOLD_NUGGET), 1);
 			tokensItem = pl.getNMS().addGlow(tokensItem);
@@ -99,7 +99,7 @@ public class Shop extends AGui {
 		updateTokens(p);
 	}
 	
-	void updateTokens(GBPlayer p) {
+	void updateTokens(SGPlayer p) {
 		if (!SaltyGamesSettings.tokensEnabled)
 			return;
 		if (!tokenButtons.keySet().contains(p.getUuid()))

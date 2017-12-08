@@ -17,7 +17,7 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import me.aaron.data.GBPlayer;
+import me.aaron.data.SGPlayer;
 import me.aaron.gui.GUIManager;
 import me.aaron.gui.buttons.AButton;
 import me.aaron.gui.guis.AGui;
@@ -299,7 +299,7 @@ public class Category {
 		}
 	}
 
-	public void updateTokens(GBPlayer gbPlayer) {
+	public void updateTokens(SGPlayer gbPlayer) {
 		for (Page page : pages.values()) {
 			page.updateTokens(gbPlayer);
 		}

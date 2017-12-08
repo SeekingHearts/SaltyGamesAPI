@@ -1,13 +1,13 @@
-package me.aaron.main;
+package me.aaron.nms;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 public interface NMSUtil {
+
+	void updateInventoryTitle(Player p, String newTitle);
 	
-	void updateInventoryTitle(Player p, String nTitle);
-	
-	void sendTitle(Player p, String title, String subtitle);
+	void sendTitle(Player p, String title, String subTitle);
 	
 	void sendActionbar(Player p, String msg);
 	
@@ -16,6 +16,6 @@ public interface NMSUtil {
 	void sendListFooter(Player p, String footer);
 	
 	ItemStack removeGlow(ItemStack itm);
-
+	
 	ItemStack addGlow(ItemStack itm);
 }

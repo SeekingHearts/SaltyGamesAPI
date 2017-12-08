@@ -1,4 +1,4 @@
-package me.aaron.gui.game;
+package me.aaron.gui.guis.game;
 
 import java.util.ArrayList;
 
@@ -13,7 +13,6 @@ import org.bukkit.inventory.meta.SkullMeta;
 import me.aaron.data.DataBase;
 import me.aaron.data.SaveType;
 import me.aaron.gui.GUIManager;
-import me.aaron.gui.guis.game.GameGuiPage;
 import me.aaron.main.SaltyGames;
 import me.aaron.utils.NumberUtil;
 

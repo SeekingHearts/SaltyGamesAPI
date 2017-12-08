@@ -31,6 +31,10 @@ public class EnterSaltyGamesEvent extends Event implements Cancellable {
 	public void setCancelled(boolean arg0) {
 		this.cancelled = arg0;
 	}
+	
+	public Player getPlayer() {
+		return p;
+	}
 
 	@Override
 	public HandlerList getHandlers() {

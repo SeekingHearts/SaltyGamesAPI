@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 import me.aaron.main.SaltyGames;
 import me.aaron.main.SaltyGamesSettings;
 
-public class GBPlayer {
+public class SGPlayer {
 	
 	private UUID uuid;
 	private boolean playSounds = true;
@@ -17,7 +17,7 @@ public class GBPlayer {
 	
 	private int tokens;
 	
-	public GBPlayer(SaltyGames pl, UUID uuid) {
+	public SGPlayer(SaltyGames pl, UUID uuid) {
 		this.uuid = uuid;
 		this.pl = pl;
 		this.stats = pl.getDataBase();

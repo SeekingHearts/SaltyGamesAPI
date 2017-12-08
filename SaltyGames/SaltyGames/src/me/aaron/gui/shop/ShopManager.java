@@ -22,7 +22,7 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import me.aaron.data.GBPlayer;
+import me.aaron.data.SGPlayer;
 import me.aaron.events.EnterSaltyGamesEvent;
 import me.aaron.gui.GUIManager;
 import me.aaron.gui.buttons.AButton;
@@ -229,7 +229,7 @@ public class ShopManager {
         }
     }
 	
-	public void updateTokens(GBPlayer p) {
+	public void updateTokens(SGPlayer p) {
 		mainShop.updateTokens(p);
 		for (Category cat : categories.values()) {
 			cat.updateTokens(p);

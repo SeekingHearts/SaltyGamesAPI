@@ -1,4 +1,4 @@
-package me.aaron.invitation;
+package me.aaron.input;
 
 import java.util.HashMap;
 import java.util.HashSet;

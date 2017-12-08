@@ -14,7 +14,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.material.MaterialData;
 
-import me.aaron.data.GBPlayer;
+import me.aaron.data.SGPlayer;
 import me.aaron.gui.GUIManager;
 import me.aaron.gui.buttons.AButton;
 import me.aaron.gui.buttons.ToggleButton;
@@ -106,7 +106,7 @@ public class MainGui extends AGui {
 		return soundButtons.get(uuid);
 	}
 
-	public void loadMainGui(GBPlayer player){
+	public void loadMainGui(SGPlayer player){
 		ToggleButton soundToggle = new ToggleButton(new MaterialData(Material.RECORD_6), 1, new MaterialData(Material.RECORD_4));
 		ItemMeta meta = soundToggle.getItemMeta();
 		meta.addItemFlags(ItemFlag.values());
@@ -138,14 +138,14 @@ public class MainGui extends AGui {
 		updateButtons(player);
 	}
 
-	public void updateButtons(GBPlayer player){
+	public void updateButtons(SGPlayer player){
 		if(openInventories.get(player.getUuid()) == null) return;
 		if(!player.isPlaySounds()) openInventories.get(player.getUuid()).setItem(soundToggleSlot, this.getSoundToggleButton(player.getUuid()).toggle());
 
 		updateTokens(player);
 	}
 
-	public void updateTokens(GBPlayer player) {
+	public void updateTokens(SGPlayer player) {
 		if(!SaltyGamesSettings.tokensEnabled) return;
 		if(!tokenButtons.keySet().contains(player.getUuid())) return;
 		if(!openInventories.keySet().contains(player.getUuid())) return;
