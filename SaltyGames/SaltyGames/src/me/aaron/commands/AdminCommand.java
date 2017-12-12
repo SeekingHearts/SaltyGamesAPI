@@ -306,10 +306,7 @@ public class AdminCommand implements CommandExecutor {
 
 
     private void checkLanguageFiles() {
-		/*
-		ToDo: check for missing keys in all used language files and add some support for creating
-		Files that contain all customized messages and the default ones for previously unset keys
-		*/
+		
         HashMap<String, List<String>> currentKeys;
         for(String moduleID : plugin.getGameReg().getModuleIDs()){
             currentKeys = collectMissingKeys(moduleID);

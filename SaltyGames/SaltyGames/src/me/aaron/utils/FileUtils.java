@@ -158,13 +158,7 @@ public class FileUtils {
         return true;
     }
 
-    /**
-     * Slightly adapted method from Bukkit...
-     *
-     * @param resourcePath path to the resource in the external plugin
-     * @param gbPath wanted path for the resource in sg
-     * @param plugin external plugin
-     */
+    
     static private void saveResourceToGBFolder(String resourcePath, String gbPath, JavaPlugin plugin) {
         if(resourcePath == null || resourcePath.isEmpty()) {
             throw new IllegalArgumentException("ResourcePath cannot be null or empty");

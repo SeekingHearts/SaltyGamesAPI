@@ -74,12 +74,7 @@ public class LobbyPlugin extends JavaPlugin {
 	public ArrayList<String> inSilentLobby = new ArrayList<String>();
 
 	// PROFILE \\ SETTINGS
-	/*
-	 * public ArrayList<String> jumpPadsOff = new ArrayList<String>(); public
-	 * ArrayList<String> doubleJumpOff = new ArrayList<String>(); public
-	 * ArrayList<String> firstTimeStgs = new ArrayList<String>(); public
-	 * ArrayList<String> hasChatDisabled = new ArrayList<String>();
-	 */
+	
 	public ArrayList<String> toggledPvP = new ArrayList<String>();
 	public ArrayList<String> willStopPvP = new ArrayList<String>();
 	public static HashMap<String, Boolean> jumpPads = new HashMap<String, Boolean>();
@@ -232,22 +227,5 @@ public class LobbyPlugin extends JavaPlugin {
 		return instance;
 	}
 	
-	/*public void createUserData(Player p) {
-		String playerName = p.getName();
-		File ud = new File(getDataFolder(), File.separator + "PlayerDatabase");
-		File f = new File(ud, File.separator + playerName + ".yml");
-		FileConfiguration playerData = YamlConfiguration.loadConfiguration(f);
-		
-		if (!f.exists()) {
-			try {
-				
-				playerData.createSection("Settings");
-				
-				playerData.save(f);
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}*/
+	
 }

@@ -246,12 +246,7 @@ public class Invs {
 				hideplayer.setItem(7, ItemUtils.getItem(Material.INK_SACK, "§8Hide EveryOne", "§7Verstecke alle Spieler", 8, 1));
 				p.playSound(p.getLocation(), Sound.CHICKEN_EGG_POP, 1, 1);
 				
-				/*Bukkit.getScheduler().scheduleSyncDelayedTask(LobbyPlugin.getInstance(), new Runnable() {
-					
-					@Override
-					public void run() {
-						hideplayer.setItem(4, ItemUtils.getItem(Material.INK_SACK, "§dShow Only Staff", "§7Zeige nur noch die TeamMitglieder", 5, 1));
-						p.playSound(p.getLocation(), Sound.CHICKEN_EGG_POP, 1, 1);*/
+				
 						
 						Bukkit.getScheduler().scheduleSyncDelayedTask(LobbyPlugin.getInstance(), new Runnable() {
 							

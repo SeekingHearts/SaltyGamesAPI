@@ -26,23 +26,7 @@ public class PlayerDamageListener implements Listener {
 			
 			e.setCancelled(true);
 			
-			/*if (pl.toggledPvP.contains(p.getName())) {
-				if (pl.toggledPvP.contains(target.getName())) {
-					e.setCancelled(false);
-					return;
-				} else {
-					p.sendMessage(pl.prefix + ChatColor.DARK_RED + "Du kannst niemanden schlagen, wenn " + ChatColor.GOLD + "dein Ziel " + ChatColor.DARK_RED + "PvP deaktiviert hat!");
-					e.setCancelled(true);
-					return;
-				}
-			} else if (pl.willStopPvP.contains(p.getName())) {
-				PvPOff.x = 5;
-				return;
-			} else {
-				p.sendMessage(pl.prefix + ChatColor.DARK_RED + "Du kannst niemanden schlagen, wenn " + ChatColor.GOLD + "du " + ChatColor.DARK_RED + "PvP deaktiviert hast!");
-				e.setCancelled(true);
-				return;
-			}*/
+			
 		}
 	}
 	

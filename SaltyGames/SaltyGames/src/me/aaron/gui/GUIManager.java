@@ -193,12 +193,7 @@ public class GUIManager {
 		}
 	}
 
-	/**
-	 * Open the plugins main gui for the player
-	 *
-	 * @param whoClicked player
-	 * @return success in opening the gui
-	 */
+	
 	public boolean openMainGui(Player whoClicked) {
 		if(!whoClicked.hasPermission(Permission.USE.getPermissions())) {
 			whoClicked.sendMessage(lang.PREFIX + lang.CMD_NO_PERM);
@@ -230,12 +225,7 @@ public class GUIManager {
 	}
 
 
-	/**
-	 * Register a GUI
-	 *
-	 * To use this method the args of the gui have to be set already
-	 * @param gui Gui to register
-	 */
+	
 	public void registerGameGUI(GameGui gui){
 		if(gui.getArgs() == null || gui.getArgs().length != 2){
 			Bukkit.getConsoleSender().sendMessage(lang.PREFIX + ChatColor.RED + " Error while registering a gui");
@@ -251,14 +241,7 @@ public class GUIManager {
 		SaltyGames.debug("registered gamegui: " + args[0] + ", " + args[1]);
 	}
 
-	/**
-	 * Register the main GUI of a game
-	 *
-	 *
-	 * @param gui game gui to register
-	 * @param button button in the main gui that will open the game gui
-	 * @param subCommand optional sub commands to fast-open the game gui
-	 */
+	
 	public void registerMainGameGUI(GameGui gui, ItemStack button, String... subCommand){
 		if(gui.getArgs() == null || gui.getArgs().length != 2){
 			Bukkit.getConsoleSender().sendMessage(lang.PREFIX + ChatColor.RED + " Error while registering a gui");

@@ -43,20 +43,4 @@ public class HubBoostListener implements Listener {
 	}
 }
 
-/*
- * @EventHandler public void onPlayerBoosting(PlayerInteractEvent e) {
- * 
- * Player p = e.getPlayer();
- * 
- * if (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() ==
- * Action.RIGHT_CLICK_BLOCK) { if (e.getMaterial().equals(Material.SLIME_BALL))
- * { if (p.getItemInHand().getItemMeta().getDisplayName()
- * .equalsIgnoreCase(ChatColor.DARK_PURPLE + "Booster")) { if
- * (pl.jumpPadsOn.contains(p.getName())) {
- * 
- * Vector v = p.getLocation().getDirection().multiply(10D).setY(2D);
- * p.setVelocity(v); p.playSound(p.getLocation(), Sound.ENDERDRAGON_WINGS, 3,
- * 2); } } } }
- * 
- * }
- */
+

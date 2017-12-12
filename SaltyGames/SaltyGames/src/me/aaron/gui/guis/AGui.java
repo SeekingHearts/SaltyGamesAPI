@@ -52,13 +52,7 @@ public abstract class AGui {
 	protected String title;
 	private Sound successfulClick, unsuccessfulClick;
 
-	/**
-	 * Constructor for an AGui
-	 * @param plugin instance
-	 * @param guiManager manager instance
-	 * @param slots number of slots in the gui
-	 * @param args keys for the gui
-	 */
+	
 	public AGui(SaltyGames plugin, GUIManager guiManager, int slots, String[] args, String title){
 		this.plugin = plugin;
 		this.args = args;
@@ -523,12 +517,7 @@ public abstract class AGui {
 		}
 	}
 
-	/**
-	 * Remove the player from the gui
-	 * Also remove existent personal inventories
-	 *
-	 * @param uuid player-uuid
-	 */
+	
 	public void removePlayer(UUID uuid){
 		inGui.remove(uuid);
 		openInventories.remove(uuid);

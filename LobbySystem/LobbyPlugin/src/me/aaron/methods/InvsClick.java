@@ -166,16 +166,7 @@ public class InvsClick implements Listener {
 					e.setCancelled(true);
 					p.closeInventory();
 				}
-				/*
-				 * else if (e.getCurrentItem().getItemMeta().getDisplayName().
-				 * equalsIgnoreCase("§dShow Only Staff")) { for (Player allP :
-				 * Bukkit.getServer().getOnlinePlayers()) { if
-				 * (!allP.hasPermission("lobby.vip")) { p.hidePlayer(allP); } }
-				 * if (pl.usingHide.contains(p.getName())) {
-				 * pl.usingHide.remove(p.getName()); } p.sendMessage(pl.prefix +
-				 * "§dEs werden nur noch Team Mitglieder angezeigt!");
-				 * e.setCancelled(true); p.closeInventory(); } else
-				 */ if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§aShow EveryOne")) {
+				 if (e.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§aShow EveryOne")) {
 					pl.usingHide.remove(p.getName());
 					for (Player allP : Bukkit.getServer().getOnlinePlayers()) {
 						if (!allP.getName().equals(p.getName())) {

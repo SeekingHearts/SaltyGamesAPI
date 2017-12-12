@@ -63,9 +63,7 @@ public class MainCommand implements CommandExecutor {
 
 		}
 
-		/*
-				At least one argument
-		 */
+		
 
 		// click command
 		if (args[0].equalsIgnoreCase(inviteClickCommand) && sender instanceof Player){
@@ -170,12 +168,7 @@ public class MainCommand implements CommandExecutor {
 		return true;
 	}
 
-	/**
-	 * Open the invitation gui the invite is in
-	 * @param sender player
-	 * @param argsOld old command args containing the clickCommandUUID
-	 * @return true (permission messages are send)
-	 */
+	
 	private boolean inviteClickCommand(Player sender, String[] argsOld) {
 		String[] args = new String[argsOld.length - 1];
 		for(int i = 1; i < argsOld.length; i++){
