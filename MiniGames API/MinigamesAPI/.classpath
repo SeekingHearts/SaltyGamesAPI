@@ -11,7 +11,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="F:/Benutzer/Aaron/Dokumente/My Stuff/Stuff/Minecraft/Coding/Plugins/API&apos;s/1.8.9/spigot-1.8.8-R0.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="F:/Benutzer/Aaron/Dokumente/My Stuff/Stuff/Minecraft/Coding/Plugins/API&apos;s/1.8.9/spigot-api-spigot-1.8.8-R0.1-SNAPSHOT.jar"/>
 	<classpathentry kind="lib" path="F:/Benutzer/Aaron/Dokumente/My Stuff/Stuff/Minecraft/Coding/Plugins/API&apos;s/1.8.9/Vault.jar"/>
 	<classpathentry kind="lib" path="F:/Benutzer/Aaron/Dokumente/My Stuff/Stuff/Minecraft/Coding/Plugins/API&apos;s/1.8.9/CrackShot.jar"/>
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
@@ -19,5 +19,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="F:/Benutzer/Aaron/Dokumente/My Stuff/Stuff/Minecraft/Coding/Plugins/API&apos;s/geoip2-2.10.0-with-dependencies.zip"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
