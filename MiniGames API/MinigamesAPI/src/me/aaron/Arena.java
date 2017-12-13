@@ -116,6 +116,8 @@ public class Arena {
 	boolean temp_delay_stopped = false;
 
 	protected ArenaLogger logger;
+	
+	protected MatchTimer timer;
 
 	public Arena(final JavaPlugin plugin, final String name) {
 		this.plugin = plugin;
@@ -414,7 +416,7 @@ public class Arena {
 				return;
 			}
 
-			for (final String p_ : party.getPlayers()) {
+			for (final UUID p_ : party.getPlayers()) {
 				if (Validator.isPlayerOnline(p_)) {
 					boolean cont = true;
 					MinigamesAPI.getAPI();
@@ -422,7 +424,7 @@ public class Arena {
 						// if
 						// (!pli_.getPlugin().getName().equalsIgnoreCase("MGArcade")
 						// && pli_.global_players.containsKey(p_)) {
-						if (pli_.containsGlobalPlayer(p_)) {
+						if (pli_.containsGlobalPlayer(Bukkit.getPlayer(p_).getName())) {
 							cont = false;
 						}
 					}
@@ -1452,6 +1454,24 @@ public class Arena {
 
 	public void setLastDamager(final String targetPlayer, final String damager) {
 		this.lastdamager.put(targetPlayer, damager);
+	}
+	
+	public void joinSpectate(Player p) {
+		final String playername = p.getName();
+		addPlayer(playername);
+		final ArenaPlayer ap = ArenaPlayer.getPlayerInstance(playername);
+		ap.setNoreward(true);
+		ap.setInvs(p.getInventory().getContents(), p.getInventory().getArmorContents());
+		ap.setOriginalGameMode(p.getGameMode());
+		ap.setOriginalXplvl(p.getLevel());
+		
+		pli.global_players.put(playername, this);
+		pli.global_lost.put(playername, this);
+		spectateGame(playername);
+	}
+	
+	public void timerPause() {
+		timer.pause();
 	}
 
 }

@@ -1,52 +1,52 @@
 package me.aaron;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 public class Party {
 	
-	private String owner;
+	private UUID owner;
 	
-	private ArrayList<String> players = new ArrayList<>();
+	private ArrayList<UUID> players = new ArrayList<>();
 	
-	public Party(final String owner) {
+	public Party(final UUID owner) {
 		this.owner = owner;
 	}
 	
-	public String getOwner() {
+	public UUID getOwner() {
 		return this.owner;
 	}
 	
-	public ArrayList<String> getPlayers() {
+	public ArrayList<UUID> getPlayers() {
 		return players;
 	}
 	
-	public void addPlayer(final String p) {
+	public void addPlayer(final UUID p) {
 		if (!this.players.contains(p)) {
 			this.players.add(p);
 		}
-		
-		Bukkit.getPlayer(p).sendMessage(MinigamesAPI.getAPI().partyMessages.you_joined_party.replaceAll("<player>", this.getOwner()));
-		this.tellAll(MinigamesAPI.getAPI().partyMessages.player_joined_party.replaceAll("<player>", p));
+		Bukkit.getPlayer(p).sendMessage(MinigamesAPI.getAPI().partyMessages.you_joined_party.replaceAll("<player>", Bukkit.getPlayer(this.getOwner()).getName()));
+		this.tellAll(MinigamesAPI.getAPI().partyMessages.player_joined_party.replaceAll("<player>", Bukkit.getPlayer(this.owner).getName()));
 	}
 	
-	public boolean removePlayer(final String p) {
-		if (this.players.contains(p)) {
-			this.players.remove(p);
-			final Player ppp = Bukkit.getPlayer(p);
-			if (ppp != null) {
-				ppp.sendMessage(MinigamesAPI.getAPI().partyMessages.you_left_party.replaceAll("<player>", getOwner()));
+	public boolean removePlayer(final UUID uuid) {
+		if (players.contains(uuid)) {
+			players.remove(uuid);
+			final Player p = Bukkit.getPlayer(uuid);
+			if (p != null) {
+				p.sendMessage(MinigamesAPI.getAPI().partyMessages.you_left_party.replaceAll("<player>", Bukkit.getPlayer(owner).getName()));
+				tellAll(MinigamesAPI.getAPI().partyMessages.player_left_party.replaceAll("<player>", p.getName()));
 			}
-			tellAll(MinigamesAPI.getAPI().partyMessages.player_left_party.replaceAll("<player>", p));
 			return true;
 		}
 		return false;
 	}
 	
-	public boolean containsPlayer(final String p) {
-		return players.contains(p);
+	public boolean containsPlayer(final UUID uuid) {
+		return players.contains(uuid);
 	}
 	
 	public void disband() {
@@ -58,7 +58,7 @@ public class Party {
 	}
 	
 	private void tellAll(final String msg) {
-		for (final String p : this.getPlayers()) {
+		for (final UUID p : this.getPlayers()) {
 			final Player pp  = Bukkit.getPlayer(p);
 			if (pp != null) {
 				pp.sendMessage(msg);

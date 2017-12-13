@@ -347,7 +347,7 @@ public class Classes {
 
 	public boolean kitTakeMoney(final Player p, final String kit) {
 		// Credits
-		if (this.pl.getConfig().getBoolean(ArenaConfigStrings.CONFIG_USE_CREADITS_INSTEAD_MONEY_FOR_KITS)) {
+		if (this.pl.getConfig().getBoolean(ArenaConfigStrings.CONFIG_USE_CREDITS_INSTEAD_MONEY_FOR_KITS)) {
 			final String uuid = p.getUniqueId().toString();
 			int points = 0;
 			if (!MinigamesAPI.getAPI().statsglobal.getConfig().isSet("players." + uuid + ".points")) {

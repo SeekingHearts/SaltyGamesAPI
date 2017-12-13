@@ -1541,7 +1541,7 @@ public class ArenaListener implements Listener {
         Party party_ = null;
         for (final Party party : MinigamesAPI.getAPI().globalParty.values())
         {
-            if (party.containsPlayer(event.getPlayer().getName()))
+            if (party.containsPlayer(event.getPlayer().getUniqueId()))
             {
                 party_ = party;
                 break;
@@ -1549,7 +1549,7 @@ public class ArenaListener implements Listener {
         }
         if (party_ != null)
         {
-            party_.removePlayer(event.getPlayer().getName());
+            party_.removePlayer(event.getPlayer().getUniqueId());
         }
     }
     

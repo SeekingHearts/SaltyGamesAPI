@@ -113,6 +113,7 @@ public class MessagesConfig {
         
         getConfig().addDefault("messages.you_got_the_achievement", you_got_the_achievement);
         getConfig().addDefault("messages.game_started", game_started);
+        getConfig().addDefault("messages.no_game_started", no_game_started);
         getConfig().addDefault("messages.author_of_the_map", author_of_the_map);
         getConfig().addDefault("messages.description_of_the_map", description_of_the_map);
         getConfig().addDefault("messages.not_enough_money", not_enough_money);
@@ -191,6 +192,8 @@ public class MessagesConfig {
         powerup_spawned = ChatColor.translateAlternateColorCodes('&', getConfig().getString("messages.powerup_spawned"));
         you_got_the_achievement = ChatColor.translateAlternateColorCodes('&', getConfig().getString("messages.you_got_the_achievement"));
         game_started = ChatColor.translateAlternateColorCodes('&', getConfig().getString("messages.game_started"));
+        no_game_started = ChatColor.translateAlternateColorCodes('&', getConfig().getString("messages.no_game_started"));
+        
         author_of_the_map = ChatColor.translateAlternateColorCodes('&', getConfig().getString("messages.author_of_the_map"));
         description_of_the_map = ChatColor.translateAlternateColorCodes('&', getConfig().getString("messages.description_of_the_map"));
         not_enough_money = ChatColor.translateAlternateColorCodes('&', getConfig().getString("messages.not_enough_money"));
@@ -271,6 +274,7 @@ public class MessagesConfig {
     public String powerup_spawned                   = "&2A Powerup spawned!";
     public String you_got_the_achievement           = "&3You got the achievement &b<achievement>&3!";
     public String game_started                      = "&2The game has started!";
+    public String no_game_started                   = "&2There is no started game!";
     public String author_of_the_map                 = "&3You are playing on the map &b<arena> &3by &b<author>&3!";
     public String description_of_the_map            = "<description>";
     public String not_enough_money                  = "&cYou don't have enough money.";

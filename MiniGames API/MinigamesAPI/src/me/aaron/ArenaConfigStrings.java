@@ -36,7 +36,7 @@ public interface ArenaConfigStrings {
     
     String CONFIG_CLASSES_ENABLED = "config.classes_enabled"; 
     String CONFIG_SHOP_ENABLED = "config.shop_enabled"; 
-    String CONFIG_USE_CREADITS_INSTEAD_MONEY_FOR_KITS = "config.use_credits_instead_of_money_for_kits"; 
+    String CONFIG_USE_CREDITS_INSTEAD_MONEY_FOR_KITS = "config.use_credits_instead_of_money_for_kits"; 
     String CONFIG_RESET_INV_WHEN_LEAVING_SERVER = "config.reset_inventory_when_players_leave_server"; 
     String CONFIG_COLOR_BACKGROUND_WOOL = "config.color_background_wool_of_signs"; 
     String CONFIG_SHOW_CLASSES_WITHOUT_PERM = "config.show_classes_without_usage_permission";

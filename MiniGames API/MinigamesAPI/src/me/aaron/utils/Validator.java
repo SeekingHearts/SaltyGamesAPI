@@ -1,5 +1,7 @@
 package me.aaron.utils;
 
+import java.util.UUID;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -14,8 +16,16 @@ import me.aaron.PluginInstance;
 
 public class Validator {
 	
-	public static boolean isPlayerOnline(final String player) {
-		final Player p = Bukkit.getPlayer(player);
+	public static boolean isPlayerOnline(final String p_) {
+		final Player p = Bukkit.getPlayer(p_);
+		if (p != null) {
+			return true;
+		}
+		return false;
+	}
+
+	public static boolean isPlayerOnline(final UUID p_) {
+		final Player p = Bukkit.getPlayer(p_);
 		if (p != null) {
 			return true;
 		}
