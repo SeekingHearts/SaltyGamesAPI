@@ -241,7 +241,7 @@ public class MinigamesAPI extends JavaPlugin implements PluginMessageListener {
 
 			}, 0, 20 * getConfig().getInt(PluginConfigStrings.MOTD_ROTATION_SECONDS));
 		}
-		
+
 		registerListeners();
 
 		Bukkit.getScheduler().runTaskLater(this, () -> {
@@ -295,7 +295,7 @@ public class MinigamesAPI extends JavaPlugin implements PluginMessageListener {
 
 	private void registerListeners() {
 		PluginManager pm = getServer().getPluginManager();
-		
+
 		pm.registerEvents(new BlockBreak(), this);
 		pm.registerEvents(new SignUse(), this);
 		pm.registerEvents(new SignBreak(), this);
@@ -593,142 +593,142 @@ public class MinigamesAPI extends JavaPlugin implements PluginMessageListener {
 								return false;
 							}
 						}
-					} else if (args[0].equalsIgnoreCase(CommandStrings.MGLIB_HOLOGRAM)) {
-						if (sender instanceof Player) {
-							final Player p = (Player) sender;
-							p.sendMessage(Messages.getString("MinigamesAPI.PlayingHologram", LOCALE));
-							Effects.playHologram(p, p.getLocation(),
-									ChatColor.values()[(int) (Math.random() * ChatColor.values().length - 1)] + "TEST",
-									true, true);
-							return false;
-						}
-					} else if (args[0].equalsIgnoreCase(CommandStrings.MGLIB_STATS_HOLOGRAM)) {
-						if (sender instanceof Player) {
-							final Player p = (Player) sender;
-
-							if (args.length > 1) {
-								final PluginInstance pli = this
-										.getPluginInstance((JavaPlugin) Bukkit.getPluginManager().getPlugin(args[1]));
-								p.sendMessage(Messages.getString("MinigamesAPI.PlayingStatsHologram", LOCALE));
-
-								Effects.playHologram(p, p.getLocation().add(0D, 1D, 0D),
-										ChatColor.values()[(int) (Math.random() * ChatColor.values().length - 1)]
-												+ Messages.getString("MinigamesAPI.StatsWin", LOCALE)
-												+ pli.getStatsInstance().getWins(p.getName()),
-										false, false);
-								Effects.playHologram(p, p.getLocation().add(0D, 0.75D, 0D),
-										ChatColor.values()[(int) (Math.random() * ChatColor.values().length - 1)]
-												+ Messages.getString("MinigamesAPI.StatsPotions", LOCALE)
-												+ pli.getStatsInstance().getPoints(p.getName()),
-										false, false);
-								Effects.playHologram(p, p.getLocation().add(0D, 0.5D, 0D),
-										ChatColor.values()[(int) (Math.random() * ChatColor.values().length - 1)]
-												+ Messages.getString("MinigamesAPI.StatsKills", LOCALE)
-												+ pli.getStatsInstance().getKills(p.getName()),
-										false, false);
-								Effects.playHologram(p, p.getLocation().add(0D, 0.25D, 0D),
-										ChatColor.values()[(int) (Math.random() * ChatColor.values().length - 1)]
-												+ Messages.getString("MinigamesAPI.StatsDeaths", LOCALE)
-												+ pli.getStatsInstance().getDeaths(p.getName()),
-										false, false);
-								return false;
-							}
-						}
-					} else if (args[0].equalsIgnoreCase(CommandStrings.MGLIB_JOIN)) {
-						if (args.length > 3) {
-							String game = args[1];
-							String ar = args[2];
-							String server = args[3];
-
-							Player p = null;
-
-							if (sender instanceof Player)
-								p = (Player) sender;
-							if (args.length > 3)
-								p = Bukkit.getPlayer(args[3]);
-							if (p == null)
-								return true;
-
-							ByteArrayDataOutput out = ByteStreams.newDataOutput();
-
-							try {
-								out.writeUTF("Forward");
-								out.writeUTF("ALL");
-								out.writeUTF(ChannelStrings.SUBCHANNEL_MINIGAMESLIB_BACK);
-
-								ByteArrayOutputStream msgbytes = new ByteArrayOutputStream();
-								DataOutputStream msgout = new DataOutputStream(msgbytes);
-								String info = game + ":" + ar + ":" + p.getName();
-								getLogger().info("Spieler beigetreten: " + info);
-								msgout.writeUTF(info);
-
-								out.writeShort(msgbytes.toByteArray().length);
-								out.write(msgbytes.toByteArray());
-
-								Bukkit.getServer().sendPluginMessage(this, ChannelStrings.CHANNEL_BUNGEE_CORD,
-										out.toByteArray());
-							} catch (Exception e) {
-								MinigamesAPI.getAPI().getLogger().log(Level.WARNING, "Fehler", e);
-							}
-							connectToServer(this, p.getName(), server);
-						} else {
-							sender.sendMessage(ChatColor.GRAY + "Usage: &c/join <game> <arena> <server> [player]");
-							sender.sendMessage(ChatColor.GRAY + "[player] ist optional!");
-						}
-					}
-					return true;
-				}
-				if (args.length < 1) {
-					sender.sendMessage(String.format(Messages.getString("MinigamesAPI.MinigamesLibHeader", LOCALE),
-							this.getDescription().getVersion()));
-
-					int c = 0;
-					MinigamesAPI.getAPI();
-
-					for (final PluginInstance pli : MinigamesAPI.pinstances.values()) {
-						c++;
-						sender.sendMessage(String.format(Messages.getString("MinigamesAPI.PluginArenaCount", LOCALE),
-								pli.getPlugin().getName(), pli.getArenas().size()));
-					}
-					if (c < 1) {
-						sender.sendMessage(String.format(Messages.getString("MinigamesAPI.NoMinigamesFound", LOCALE)));
-					}
-
-					sender.sendMessage(Messages.getString("MinigamesAPI.MgApiSubCommands", LOCALE));
-					sender.sendMessage(Messages.getString("MinigamesAPI.MgApiSubCommandsInfo", LOCALE));
-					sender.sendMessage(Messages.getString("MinigamesAPI.MgApiSubCommandsDebug", LOCALE));
-					sender.sendMessage(Messages.getString("MinigamesAPI.MgApiSubCommandsList", LOCALE));
-					sender.sendMessage(Messages.getString("MinigamesAPI.MgApiSubCommandsTitle", LOCALE));
-					sender.sendMessage(Messages.getString("MinigamesAPI.MgApiSubCommandsSubtitle", LOCALE));
-					sender.sendMessage(Messages.getString("MinigamesAPI.MgApiSubCommandsHologram", LOCALE));
-					sender.sendMessage(Messages.getString("MinigamesAPI.MgApiSubCommandsSigns", LOCALE));
-					sender.sendMessage(Messages.getString("MinigamesAPI.MgApiSubCommandsPotionEffect", LOCALE));
-					sender.sendMessage(Messages.getString("MinigamesAPI.MgApiSubCommandsStatsHologram", LOCALE));
-					sender.sendMessage(Messages.getString("MinigamesAPI.MgApiSubCommandsJoin", LOCALE));
-				}
-				if (sender instanceof Player && args.length > 0) {
-					final Player p = (Player) sender;
-					boolean cout = false;
-
-					for (final ParticleEffectNew pe : ParticleEffectNew.values()) {
-						if (pe.name().equalsIgnoreCase(args[0])) {
-							cout = true;
-						}
-					}
-					if (!cout) {
-						sender.sendMessage(Messages.getString("MinigamesAPI.CannotFindParticleEffect", LOCALE));
 						return true;
 					}
-					final ParticleEffectNew eff = ParticleEffectNew.valueOf(args[0]);
-					eff.setId(152);
-
-					for (float i = 0; i < 10; i++) {
-						eff.animateReflected(p, p.getLocation().clone().add(i / 5F, i / 5F, i / 5F), 1F, 2);
+				} else if (args[0].equalsIgnoreCase(CommandStrings.MGLIB_HOLOGRAM)) {
+					if (sender instanceof Player) {
+						final Player p = (Player) sender;
+						p.sendMessage(Messages.getString("MinigamesAPI.PlayingHologram", LOCALE));
+						Effects.playHologram(p, p.getLocation(),
+								ChatColor.values()[(int) (Math.random() * ChatColor.values().length - 1)] + "TEST",
+								true, true);
+						return false;
 					}
+				} else if (args[0].equalsIgnoreCase(CommandStrings.MGLIB_STATS_HOLOGRAM)) {
+					if (sender instanceof Player) {
+						final Player p = (Player) sender;
 
-					p.getWorld().playEffect(p.getLocation(), Effect.STEP_SOUND, 152);
-					p.getWorld().playEffect(p.getLocation().add(0D, 1D, 0D), Effect.STEP_SOUND, 152);
+						if (args.length > 1) {
+							final PluginInstance pli = this
+									.getPluginInstance((JavaPlugin) Bukkit.getPluginManager().getPlugin(args[1]));
+							p.sendMessage(Messages.getString("MinigamesAPI.PlayingStatsHologram", LOCALE));
+
+							Effects.playHologram(p, p.getLocation().add(0D, 1D, 0D),
+									ChatColor.values()[(int) (Math.random() * ChatColor.values().length - 1)]
+											+ Messages.getString("MinigamesAPI.StatsWin", LOCALE)
+											+ pli.getStatsInstance().getWins(p.getName()),
+									false, false);
+							Effects.playHologram(p, p.getLocation().add(0D, 0.75D, 0D),
+									ChatColor.values()[(int) (Math.random() * ChatColor.values().length - 1)]
+											+ Messages.getString("MinigamesAPI.StatsPotions", LOCALE)
+											+ pli.getStatsInstance().getPoints(p.getName()),
+									false, false);
+							Effects.playHologram(p, p.getLocation().add(0D, 0.5D, 0D),
+									ChatColor.values()[(int) (Math.random() * ChatColor.values().length - 1)]
+											+ Messages.getString("MinigamesAPI.StatsKills", LOCALE)
+											+ pli.getStatsInstance().getKills(p.getName()),
+									false, false);
+							Effects.playHologram(p, p.getLocation().add(0D, 0.25D, 0D),
+									ChatColor.values()[(int) (Math.random() * ChatColor.values().length - 1)]
+											+ Messages.getString("MinigamesAPI.StatsDeaths", LOCALE)
+											+ pli.getStatsInstance().getDeaths(p.getName()),
+									false, false);
+							return false;
+						}
+					}
+				} else if (args[0].equalsIgnoreCase(CommandStrings.MGLIB_JOIN)) {
+					if (args.length > 3) {
+						String game = args[1];
+						String ar = args[2];
+						String server = args[3];
+
+						Player p = null;
+
+						if (sender instanceof Player)
+							p = (Player) sender;
+						if (args.length > 3)
+							p = Bukkit.getPlayer(args[3]);
+						if (p == null)
+							return true;
+
+						ByteArrayDataOutput out = ByteStreams.newDataOutput();
+
+						try {
+							out.writeUTF("Forward");
+							out.writeUTF("ALL");
+							out.writeUTF(ChannelStrings.SUBCHANNEL_MINIGAMESLIB_BACK);
+
+							ByteArrayOutputStream msgbytes = new ByteArrayOutputStream();
+							DataOutputStream msgout = new DataOutputStream(msgbytes);
+							String info = game + ":" + ar + ":" + p.getName();
+							getLogger().info("Spieler beigetreten: " + info);
+							msgout.writeUTF(info);
+
+							out.writeShort(msgbytes.toByteArray().length);
+							out.write(msgbytes.toByteArray());
+
+							Bukkit.getServer().sendPluginMessage(this, ChannelStrings.CHANNEL_BUNGEE_CORD,
+									out.toByteArray());
+						} catch (Exception e) {
+							MinigamesAPI.getAPI().getLogger().log(Level.WARNING, "Fehler", e);
+						}
+						connectToServer(this, p.getName(), server);
+					} else {
+						sender.sendMessage(ChatColor.GRAY + "Usage: &c/join <game> <arena> <server> [player]");
+						sender.sendMessage(ChatColor.GRAY + "[player] ist optional!");
+					}
 				}
+			}
+			if (args.length < 1) {
+				sender.sendMessage(String.format(Messages.getString("MinigamesAPI.MinigamesLibHeader", LOCALE),
+						this.getDescription().getVersion()));
+
+				int c = 0;
+				MinigamesAPI.getAPI();
+
+				for (final PluginInstance pli : MinigamesAPI.pinstances.values()) {
+					c++;
+					sender.sendMessage(String.format(Messages.getString("MinigamesAPI.PluginArenaCount", LOCALE),
+							pli.getPlugin().getName(), pli.getArenas().size()));
+				}
+				if (c < 1) {
+					sender.sendMessage(String.format(Messages.getString("MinigamesAPI.NoMinigamesFound", LOCALE)));
+				}
+
+				sender.sendMessage(Messages.getString("MinigamesAPI.MgApiSubCommands", LOCALE));
+				sender.sendMessage(Messages.getString("MinigamesAPI.MgApiSubCommandsInfo", LOCALE));
+				sender.sendMessage(Messages.getString("MinigamesAPI.MgApiSubCommandsDebug", LOCALE));
+				sender.sendMessage(Messages.getString("MinigamesAPI.MgApiSubCommandsList", LOCALE));
+				sender.sendMessage(Messages.getString("MinigamesAPI.MgApiSubCommandsTitle", LOCALE));
+				sender.sendMessage(Messages.getString("MinigamesAPI.MgApiSubCommandsSubtitle", LOCALE));
+				sender.sendMessage(Messages.getString("MinigamesAPI.MgApiSubCommandsHologram", LOCALE));
+				sender.sendMessage(Messages.getString("MinigamesAPI.MgApiSubCommandsSigns", LOCALE));
+				sender.sendMessage(Messages.getString("MinigamesAPI.MgApiSubCommandsPotionEffect", LOCALE));
+				sender.sendMessage(Messages.getString("MinigamesAPI.MgApiSubCommandsStatsHologram", LOCALE));
+				sender.sendMessage(Messages.getString("MinigamesAPI.MgApiSubCommandsJoin", LOCALE));
+			}
+			if (sender instanceof Player && args.length > 0) {
+				final Player p = (Player) sender;
+				boolean cout = false;
+
+				for (final ParticleEffectNew pe : ParticleEffectNew.values()) {
+					if (pe.name().equalsIgnoreCase(args[0])) {
+						cout = true;
+					}
+				}
+				if (!cout) {
+					sender.sendMessage(Messages.getString("MinigamesAPI.CannotFindParticleEffect", LOCALE));
+					return true;
+				}
+				final ParticleEffectNew eff = ParticleEffectNew.valueOf(args[0]);
+				eff.setId(152);
+
+				for (float i = 0; i < 10; i++) {
+					eff.animateReflected(p, p.getLocation().clone().add(i / 5F, i / 5F, i / 5F), 1F, 2);
+				}
+
+				p.getWorld().playEffect(p.getLocation(), Effect.STEP_SOUND, 152);
+				p.getWorld().playEffect(p.getLocation().add(0D, 1D, 0D), Effect.STEP_SOUND, 152);
 			}
 			return true;
 		}
@@ -1009,7 +1009,7 @@ public class MinigamesAPI extends JavaPlugin implements PluginMessageListener {
 	public void removePartyInvites(UUID invedP) {
 		this.global_party_invites.remove(invedP);
 	}
-	
+
 	public Iterable<Party> getParties() {
 		return globalParty.values();
 	}
@@ -1064,24 +1064,35 @@ public class MinigamesAPI extends JavaPlugin implements PluginMessageListener {
 	public String getServerBySignLocation(Location Signloc) {
 		if (getConfig().isSet(ArenaConfigStrings.ARENAS_PREFIX)) {
 			for (String mg_key : getConfig().getConfigurationSection(ArenaConfigStrings.ARENAS_PREFIX).getKeys(false)) {
-				for (String ar_key : getConfig().getConfigurationSection(ArenaConfigStrings.ARENAS_PREFIX + mg_key + ".").getKeys(false)) {
+				for (String ar_key : getConfig()
+						.getConfigurationSection(ArenaConfigStrings.ARENAS_PREFIX + mg_key + ".").getKeys(false)) {
 					if (getConfig().isString(ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + ar_key + ".world")) {
-						Location loc = new Location(Bukkit.getWorld(getConfig().getString(ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + ar_key + ".world")),
-                                getConfig().getInt(ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + ar_key + ".loc.x"),
-                                getConfig().getInt(ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + ar_key + ".loc.y"),
-                                getConfig().getInt(ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + ar_key + ".loc.z"));
-						
+						Location loc = new Location(
+								Bukkit.getWorld(getConfig().getString(
+										ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + ar_key + ".world")),
+								getConfig().getInt(ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + ar_key + ".loc.x"),
+								getConfig().getInt(ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + ar_key + ".loc.y"),
+								getConfig()
+										.getInt(ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + ar_key + ".loc.z"));
+
 						if (loc.distance(Signloc) < 1) {
-							return getConfig().getString(ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + ar_key + ".server");
+							return getConfig()
+									.getString(ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + ar_key + ".server");
 						}
 					}
 					if (getConfig().isString(ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + ar_key + ".specworld")) {
-						Location loc = new Location(Bukkit.getWorld(getConfig().getString(ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + ar_key + ".specworld")),
-                                getConfig().getInt(ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + ar_key + ".specloc.x"),
-                                getConfig().getInt(ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + ar_key + ".specloc.y"),
-                                getConfig().getInt(ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + ar_key + ".specloc.z"));
+						Location loc = new Location(
+								Bukkit.getWorld(getConfig().getString(
+										ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + ar_key + ".specworld")),
+								getConfig().getInt(
+										ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + ar_key + ".specloc.x"),
+								getConfig().getInt(
+										ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + ar_key + ".specloc.y"),
+								getConfig().getInt(
+										ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + ar_key + ".specloc.z"));
 						if (loc.distance(Signloc) < 1) {
-							return getConfig().getString(ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + ar_key + ".specserver");
+							return getConfig().getString(
+									ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + ar_key + ".specserver");
 						}
 					}
 				}
@@ -1089,66 +1100,71 @@ public class MinigamesAPI extends JavaPlugin implements PluginMessageListener {
 		}
 		return null;
 	}
-	
-	public String getInfoBySignLocation(Location sign)
-    {
-        if (getConfig().isSet(ArenaConfigStrings.ARENAS_PREFIX))
-        {
-            for (String mg_key : getConfig().getConfigurationSection(ArenaConfigStrings.ARENAS_PREFIX).getKeys(false))
-            {
-                for (String arena_key : getConfig().getConfigurationSection(ArenaConfigStrings.ARENAS_PREFIX + mg_key + ".").getKeys(false))
-                {
-                    final ConfigurationSection section = getConfig().getConfigurationSection(ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + arena_key);
-                    if (section.contains("world"))
-                    {
-                        Location l = new Location(Bukkit.getWorld(getConfig().getString(ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + arena_key + ".world")),
-                                getConfig().getInt(ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + arena_key + ".loc.x"),
-                                getConfig().getInt(ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + arena_key + ".loc.y"),
-                                getConfig().getInt(ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + arena_key + ".loc.z"));
-                        if (l.distance(sign) < 1)
-                        {
-                            return mg_key + ":" + arena_key + ":join";
-                        }
-                    }
-                    if (section.contains("specworld"))
-                    {
-                        Location l = new Location(Bukkit.getWorld(getConfig().getString(ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + arena_key + ".specworld")),
-                                getConfig().getInt(ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + arena_key + ".specloc.x"),
-                                getConfig().getInt(ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + arena_key + ".specloc.y"),
-                                getConfig().getInt(ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + arena_key + ".specloc.z"));
-                        if (l.distance(sign) < 1)
-                        {
-                            return mg_key + ":" + arena_key + ":spec";
-                        }
-                    }
-                }
-            }
-        }
-        return "";
-    }
-	
+
+	public String getInfoBySignLocation(Location sign) {
+		if (getConfig().isSet(ArenaConfigStrings.ARENAS_PREFIX)) {
+			for (String mg_key : getConfig().getConfigurationSection(ArenaConfigStrings.ARENAS_PREFIX).getKeys(false)) {
+				for (String arena_key : getConfig()
+						.getConfigurationSection(ArenaConfigStrings.ARENAS_PREFIX + mg_key + ".").getKeys(false)) {
+					final ConfigurationSection section = getConfig()
+							.getConfigurationSection(ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + arena_key);
+					if (section.contains("world")) {
+						Location l = new Location(
+								Bukkit.getWorld(getConfig().getString(
+										ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + arena_key + ".world")),
+								getConfig()
+										.getInt(ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + arena_key + ".loc.x"),
+								getConfig()
+										.getInt(ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + arena_key + ".loc.y"),
+								getConfig().getInt(
+										ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + arena_key + ".loc.z"));
+						if (l.distance(sign) < 1) {
+							return mg_key + ":" + arena_key + ":join";
+						}
+					}
+					if (section.contains("specworld")) {
+						Location l = new Location(
+								Bukkit.getWorld(getConfig().getString(
+										ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + arena_key + ".specworld")),
+								getConfig().getInt(
+										ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + arena_key + ".specloc.x"),
+								getConfig().getInt(
+										ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + arena_key + ".specloc.y"),
+								getConfig().getInt(
+										ArenaConfigStrings.ARENAS_PREFIX + mg_key + "." + arena_key + ".specloc.z"));
+						if (l.distance(sign) < 1) {
+							return mg_key + ":" + arena_key + ":spec";
+						}
+					}
+				}
+			}
+		}
+		return "";
+	}
+
 	public void letPlayerJoinServer(String server, final Player p, final String signInfo) {
 		try {
 			ByteArrayDataOutput out = ByteStreams.newDataOutput();
-			
+
 			try {
 				out.writeUTF("Forward");
 				out.writeUTF("ALL");
 				out.writeUTF(ChannelStrings.SUBCHANNEL_MINIGAMESLIB_BACK);
-				
+
 				ByteArrayOutputStream msgbytes = new ByteArrayOutputStream();
 				DataOutputStream msgout = new DataOutputStream(msgbytes);
 				String info = signInfo + ":" + p.getName();
-				
+
 				out.writeShort(msgbytes.toByteArray().length);
 				out.write(msgbytes.toByteArray());
-				
+
 				Bukkit.getServer().sendPluginMessage(this, ChannelStrings.CHANNEL_BUNGEE_CORD, out.toByteArray());
 			} catch (Exception e) {
 				getLogger().log(Level.WARNING, "Fehler beim Senden der Nachricht", e);
 			}
 		} catch (Exception e) {
-			getLogger().log(Level.WARNING, "Fehler beim Senden der ersten Schilderanfrage - Fehlerhafte(r/s) arena/server/minigame?", e);
+			getLogger().log(Level.WARNING,
+					"Fehler beim Senden der ersten Schilderanfrage - Fehlerhafte(r/s) arena/server/minigame?", e);
 		}
 		connectToServer(this, p.getName(), server);
 	}
