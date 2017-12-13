@@ -1201,16 +1201,7 @@ public class CommandHandler {
         return true;
     }
     
-    /**
-     * Send the leaderboards to a player
-     * 
-     * @param sender
-     *            Player to send the leaderboards to
-     * @param count
-     *            Amount of result items to show
-     * @param wins
-     *            whether to check for wins or points leaderboards
-     */
+    
     private void sendLeaderboards(final PluginInstance pli, final CommandSender sender, final int count, final boolean wins)
     {
         int c = 0;

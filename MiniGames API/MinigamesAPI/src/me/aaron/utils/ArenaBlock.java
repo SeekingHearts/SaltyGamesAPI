@@ -1,4 +1,4 @@
-package me.aaron;
+package me.aaron.utils;
 
 import java.io.Serializable;
 import java.util.ArrayList;

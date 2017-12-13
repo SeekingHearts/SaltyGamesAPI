@@ -168,9 +168,7 @@ public class MatchTimer {
         this.stopTimer();
     }
 
-    /**
-     * Starts the bukkit timer task
-     */
+    
     private void startTimer(Plugin plugin)
     {
         if (this.timerTask == null)
@@ -186,9 +184,7 @@ public class MatchTimer {
         }
     }
 
-    /**
-     * Stops the bukkit timer task
-     */
+    
     private void stopTimer()
     {
         if (this.timerTask != null)
@@ -198,9 +194,7 @@ public class MatchTimer {
         }
     }
     
-    /**
-     * Fixes warnings depending on remaining game time
-     */
+    
     private void fixWarnings()
     {
         long delta = this.getMaxMillis() - this.getDurationMillis();
@@ -216,11 +210,7 @@ public class MatchTimer {
         this.warn1 = sec >= 1;
     }
     
-    /**
-     * On timer tick
-     * 
-     * @param task
-     */
+    
     private void onTimer(BukkitTask task)
     {
         if (!this.paused)

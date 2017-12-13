@@ -15,6 +15,7 @@ import org.bukkit.block.Chest;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.io.BukkitObjectInputStream;
 
+import me.aaron.utils.ArenaBlock;
 import me.aaron.utils.Util;
 
 public class PrivateUtil {

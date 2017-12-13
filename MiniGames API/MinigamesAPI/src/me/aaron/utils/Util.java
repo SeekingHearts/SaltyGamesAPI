@@ -53,7 +53,6 @@ import org.bukkit.util.Vector;
 import org.bukkit.util.io.BukkitObjectOutputStream;
 
 import me.aaron.Arena;
-import me.aaron.ArenaBlock;
 import me.aaron.ArenaConfigStrings;
 import me.aaron.ArenaLogger;
 import me.aaron.ArenaSetup;

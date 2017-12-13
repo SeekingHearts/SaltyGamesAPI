@@ -1,0 +1,19 @@
+name: SaltyGamesAPI
+main: me.aaron.MinigamesAPI
+version: 1.0
+author: [TheSaltyOne, Sistogy, Aaron]
+description: Aarons MinigamesAPI fuer LegendKingdom.eu
+softdepend: [Vault]
+
+commands:
+  mapi:
+    description: Main Command
+    usage: /mapi [action]
+    aliases: [mgapi, mglib]
+  party:
+    description: Main Party Command
+    usage: /party [action]
+  start:
+    description: Starte Minigame
+    usage: /start [action]
+    aliases: [startmg, startminigame]
