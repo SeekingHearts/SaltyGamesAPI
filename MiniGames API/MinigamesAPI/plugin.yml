@@ -1,5 +1,5 @@
 name: SaltyGamesAPI
-main: me.aaron.MinigamesAPI
+main: main.me.aaron.MinigamesAPI
 version: 1.0
 author: [TheSaltyOne, Sistogy, Aaron]
 description: Aarons MinigamesAPI fuer LegendKingdom.eu

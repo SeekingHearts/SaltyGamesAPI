@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class Messages {
 	
-	private static final String BUNDLE_NAME = "me.aaron.messages";
+	private static final String BUNDLE_NAME = "main.me.aaron.messages";
 	
 	private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(BUNDLE_NAME);
 	
